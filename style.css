@@ -1,0 +1,14 @@
+table {
+    padding: 10px;
+    font-family: sans-serif;
+    font-size: 24px;
+}
+
+td, th {
+ border: 1px solid black;
+ padding: 8px
+}
+
+td {
+    background-color: honeydew;
+}
