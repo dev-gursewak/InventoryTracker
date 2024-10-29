@@ -1,14 +1,19 @@
 const itemName = document.querySelector('#itemName');
 const noOfItems = document.querySelector('#noOfItems');
 const btn = document.querySelector('#submit');
+const inventory = {};
 
 
 btn.addEventListener('click', () => {
     const nameValue = itemName.value.trim();
-    const totalItems = noOfItems.value;
+    const totalItems = parseInt(noOfItems.value, 10);
     itemName.value = '';
-    totalItems.value = NaN;
-    if (nameValue && totalItems){
+    noOfItems.value = '';
+    inventory[nameValue] = Number(inventory[nameValue] || 0) + Number(totalItems);
+    
+    if (!nameValue || totalItems <= 0){
+        alert("Please provide input for both items and no of items");
+    } else {
         let tr = document.createElement('tr');
         let trItems = document.createElement('td');
         let trNumber = document.createElement('td');
@@ -20,7 +25,6 @@ btn.addEventListener('click', () => {
         tr.appendChild(trItems);
         tr.appendChild(trNumber);
         inventoryTable.appendChild(tr);
-    } else {
-        alert("Please provide input for both items and no of items");
     }
+    itemName.focus();
 })
